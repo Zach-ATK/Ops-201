@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Script Name:                  loginhist
+# Script Name:                  login history
 # Author:                       Zachariah Woodbridge
 # Date of latest revision:      25/10/2023
-# Purpose:                      Challenge 03
+# Purpose:                      Challenge 03 - Functions
 
 # Declaration of variables
 YLW='\033[1;33m' # establishes yellow color

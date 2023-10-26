@@ -12,8 +12,7 @@ dir=("d1" "d2" "d3" "d4")
 # Declaration of functions
 
 # Main
-# I can make directories all DAY, at first I tried making my directories manually, 
-# but then I remembered 'touch' will do it for you!
+# I can make directories all DAY, but I added it to my for loop
 # Thank god for for loops :)
 
 for d in "${dir[@]}"; do

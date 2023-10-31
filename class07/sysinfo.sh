@@ -47,5 +47,5 @@ display_info "display"
 sleep 3
 display_info "network"
 
-# Exit with success
+# Exit with success, I guess this isn't necessary - learning new things
 exit 0

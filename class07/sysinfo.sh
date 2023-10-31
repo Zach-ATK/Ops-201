@@ -7,23 +7,23 @@
 
 
 # Declaration of variables
-lshw_output=$(lshw)
+lshw_out=$(lshw)
 
 # Declaration of functions
 display_info() {
     component="$1"
-    echo "Computer Name: $lshw_output" | head -n 1
+    echo "Computer Name: $lshw_out" | head -n 1
     echo "=================================================="
     echo "~~~~~~~~~~~~~ $component Information ~~~~~~~~~~~~~"
     if [ "$component" == "CPU" ]; then
-        echo "$lshw_output" | grep -A 5 "$component" | grep -E "product:|vendor:|physical id:|bus info:|width:"
+        echo "$lshw_out" | grep -A 5 "$component" | grep -E "product:|vendor:|physical id:|bus info:|width:"
     elif [ "$component" == "System Memory" ]; then
-        echo "$lshw_output" | grep -A 3 "$component" | grep -E "description:|physical id:|size:"
+        echo "$lshw_out" | grep -A 3 "$component" | grep -E "description:|physical id:|size:"
     elif [ "$component" == "display" ]; then
-        echo "$lshw_output" | grep -A 12 "$component" | grep -E "description:|product:|vendor:|physical id:|bus info:|width:|clock:|capabilities:|configuration:|resources:"
+        echo "$lshw_out" | grep -A 12 "$component" | grep -E "description:|product:|vendor:|physical id:|bus info:|width:|clock:|capabilities:|configuration:|resources:"
     elif [ "$component" == "network" ]; then
     #In this case I am using a unique ethernet card, so I tried as best I could to include all the info, but it might be non-standard.
-        echo "$lshw_output" | grep -A 17 "$component" | grep -E "description:|product:|vendor:|physical id:|bus info:|logical name:|version:|serial:|size:|capacity:|width:|clock:|capabilities:|configuration:|resources:"
+        echo "$lshw_out" | grep -A 17 "$component" | grep -E "description:|product:|vendor:|physical id:|bus info:|logical name:|version:|serial:|size:|capacity:|width:|clock:|capabilities:|configuration:|resources:"
     else 
         echo ""
     fi

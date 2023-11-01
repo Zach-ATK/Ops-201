@@ -1,40 +1,42 @@
+REM This line turns off command echoing, making the script commands invisible from terminal.
 @echo off
-REM This line turns off command echoing, making the script output cleaner.
-
+REM This enables delayed variable expansion, helpful in using variables in loops or if blocks.
 setlocal enabledelayedexpansion
-REM This enables delayed variable expansion, useful for using variables in loops or if blocks.
 
+REM This prompts the user to enter the source folder path and presses enter.
 set /p sourcePath=Enter the source folder path:
-REM This line prompts the user to enter the source folder path.
 
+REM This prompts the user to enter the destination folder path and presses enter.
 set /p destinationPath=Enter the destination folder path:
-REM This line prompts the user to enter the destination folder path.
 
+REM Checks to see  if the source folder DOESN'T exist using if/goto. Goes through sequentially.
 if not exist "!sourcePath!\" (
-    REM Check if the source folder doesn't exist.
+    REM displays "Error: Source folder does not exist"
     echo Error: Source folder does not exist.
+    REM Exits the script. End of File
     goto :eof
-    REM Display an error message and exit the script.
 )
 
+REM Checks if the destination folder DOESN'T exist using if/goto. Goes through sequentially.
 if not exist "!destinationPath!\" (
-    REM Check if the destination folder doesn't exist.
+    REM displays "Error: Destination folder does not exist"
     echo Error: Destination folder does not exist.
+    REM Exits the script. End of File   
     goto :eof
-    REM Display an error message and exit the script.
 )
 
-robocopy "!sourcePath!" "!destinationPath!" /E
 REM Use Robocopy to copy files and directories from source to destination.
-
+robocopy "!sourcePath!" "!destinationPath!" /E
+REM Checks the error level returned by Robocopy using if/else. Goes through sequentially.
 if errorlevel 8 (
-    REM Check the error level returned by Robocopy.
+    REM Displays "Error: ROBOCOPY encountered errors during the copy operation."
     echo Error: ROBOCOPY encountered errors during the copy operation.
+REM Proceeds to this step if the first wasn't true.
 ) else (
-    echo Copy operation completed successfully.
-    REM Display a success message.
+    REM Display a success message:"Copy operation completed successfully."
+    echo Copy operation completed successfully.   
 )
-
-:end
-endlocal
 REM Clean up and end the script.
+:end
+REM ends localization of env. variables.
+endlocal

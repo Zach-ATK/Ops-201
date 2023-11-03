@@ -1,3 +1,9 @@
+
+# Script Name:                  login history
+# Author:                       Zachariah Woodbridge
+# Date of latest revision:      25/10/2023
+# Purpose:                      Challenge 03 - Functions
+
 # Output all events from the System event log that occurred in the last 24 hours to a file on your desktop named last_24.txt.
 Get-WinEvent -LogName System -MaxEvents ([System.Int32]::MaxValue) | Where-Object {$_.TimeCreated -gt (Get-Date).AddHours(-24)} | Out-File -FilePath "$env:C:\Users\admin\Desktop\last_24.txt"
 # Get-WinEvent -LogName System -MaxEvents 0 | Where-Object {$_.TimeCreated -gt (Get-Date).AddHours(-24)} | Out-File -FilePath "$env:C:\Users\admin\Desktop\last_24.txt"

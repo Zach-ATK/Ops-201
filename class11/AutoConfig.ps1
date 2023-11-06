@@ -10,10 +10,11 @@
 # Main
 # Note: Must be run with administrator privileges
 # 1. Enable File and Printer Sharing
-Set-NetFirewallRule -Name "File and Printer Sharing (SMB-In)" -Enabled True
+Set-NetFirewallRule -DisplayName "File and Printer Sharing (SMB-In)" -Enabled True
 
 # 2. Allow ICMP traffic (Ping)
-Set-NetFirewallRule -Name "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
+netsh advfirewall firewall add rule name="ICMP" protocol=icmpv4:8,any dir=in action=allow
+Set-NetFirewallRule -Name "File and Printer Sharing (Echo Request - ICMPv4-In)" -Action Allow #Block to block pings
 
 # Enable Remote Management (WinRM)
 Enable-PSRemoting
